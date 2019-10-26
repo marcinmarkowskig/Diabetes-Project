@@ -11,9 +11,7 @@
           {% endif %}
           <small class="text-muted">{{ post.date_posted|date:"F d, Y" }}</small>
         </div>
-        {% if post.content is not 0 %}
           <p><a class="article-title" href="{% url 'post-detail' post.id %}">Information number: {{ post.title }}</a></p>
-        {% endif %}
         {% if post.content is not 0 %}
           <p class="article-content" style="margin-top:20px;">Blood sugar: <b>{{ post.content }}</b></p>
         {% endif %}
