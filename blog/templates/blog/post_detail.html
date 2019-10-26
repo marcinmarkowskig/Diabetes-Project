@@ -14,8 +14,9 @@
         </div>
         <div style="margin-top:20px;">
           <p>Measurement number: {{ post.title }}</p>
-          <p class="article-content">Blood sugar: <b>{{ post.content }}</b></p>
-          {% if post.content <= 90 and post.content > 0 %}
+          {% if post.content == 0 %}
+          <p class="bg-warning text-dark">Information: <b>{{ post.info }}</b></p>
+          {% elif post.content <= 90 and post.content > 0 %}
           <p class="article-content">Insulin dose: 25</p>
           {% elif post.content > 90 and post.content <= 100 %}
           <p class="article-content">Insulin dose: <b>26</b></p>
@@ -36,12 +37,5 @@
           {% elif post.content > 176 and post.content < 300 %}
           <p class="article-content">Insulin dose: <b>34</b></p>
           {% endif %}
-        </div>
-        {% if object.info is not 0 %}
-          <div>
-            Information: <b>{{ object.info }}</b>
-          </div>
-        {% endif %}
-      </div>
     </article>
 {% endblock content %}
