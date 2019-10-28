@@ -14,28 +14,35 @@
         </div>
         <div style="margin-top:20px;">
           <p>Measurement number: {{ post.title }}</p>
+          {% if post.content is not 0 %}
+            <p class="article-content" style="margin-top:20px;">Glucose level: <b>{{ post.content }}</b> mg/dL</p>
+          {% endif %}
           {% if post.content == 0 %}
-          <p class="bg-warning text-dark">Information: <b>{{ post.info }}</b></p>
-          {% elif post.content <= 90 and post.content > 0 %}
-          <p class="article-content">Insulin dose: 25</p>
+            <p class="bg-warning text-dark">Information: <b>{{ post.info }}</b></p>
+          {% elif post.content < 80 and post.content > 0 %}
+            <p class="bg-danger"><b>Glucose level is very low. Call a doctor!</b></p>
+          {% elif post.content >= 80 and post.content <= 90 %}
+            <p class="article-content">Insulin dose: <b>25</b> units</p>
           {% elif post.content > 90 and post.content <= 100 %}
-          <p class="article-content">Insulin dose: <b>26</b></p>
+            <p class="article-content">Insulin dose: <b>26</b> units</p>
           {% elif post.content > 100 and post.content <= 115 %}
-          <p class="article-content">Insulin dose: <b>27</b></p>
-          {% elif post.content > 116 and post.content <= 125 %}
-          <p class="article-content">Insulin dose: <b>28</b></p>
-          {% elif post.content > 126 and post.content <= 135 %}
-          <p class="article-content">Insulin dose: <b>29</b></p>
-          {% elif post.content > 136 and post.content <= 145 %}
-          <p class="article-content">Insulin dose: <b>30</b></p>
-          {% elif post.content > 146 and post.content <= 155 %}
-          <p class="article-content">Insulin dose: <b>31</b></p>
-          {% elif post.content > 156 and post.content <= 165 %}
-          <p class="article-content">Insulin dose: <b>32</b></p>
-          {% elif post.content > 166 and post.content <= 175 %}
-          <p class="article-content">Insulin dose: <b>33</b></p>
-          {% elif post.content > 176 and post.content < 300 %}
-          <p class="article-content">Insulin dose: <b>34</b></p>
+            <p class="article-content">Insulin dose: <b>27</b> units</p>
+          {% elif post.content > 115 and post.content <= 125 %}
+            <p class="article-content">Insulin dose: <b>28</b> units</p>
+          {% elif post.content > 125 and post.content <= 135 %}
+            <p class="article-content">Insulin dose: <b>29</b> units</p>
+          {% elif post.content > 135 and post.content <= 145 %}
+            <p class="article-content">Insulin dose: <b>30</b> units</p>
+          {% elif post.content > 145 and post.content <= 155 %}
+            <p class="article-content">Insulin dose: <b>31</b> units</p>
+          {% elif post.content > 155 and post.content <= 165 %}
+            <p class="article-content">Insulin dose: <b>32</b> units</p>
+          {% elif post.content > 165 and post.content <= 175 %}
+            <p class="article-content">Insulin dose: <b>33</b> units</p>
+          {% elif post.content > 175 and post.content <= 200 %}
+            <p class="article-content">Insulin dose: <b>34</b> units</p>
+          {% elif post.content > 200 %}
+            <p class="bg-danger"><b>Glucose level is very high. Call a doctor!</b></p>
           {% endif %}
     </article>
 {% endblock content %}

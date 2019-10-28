@@ -6,8 +6,8 @@ from django import forms
 # Create your models here.
 
 class Post(models.Model): #tabela Post
-    title = models.IntegerField(default=0, verbose_name = 'Number')#numer pomiaru w ciągu dnia
-    content = models.IntegerField(default=0, verbose_name = 'Blood sugar')#poziom cukru
+    title = models.CharField(max_length=500, default=0, verbose_name = 'Measurement information')#numer pomiaru w ciągu dnia
+    content = models.IntegerField(default=0, verbose_name = 'Glucose level')#poziom cukru zmiana
     date_posted = models.DateTimeField(default=timezone.now)
     author = models.ForeignKey(User, on_delete=models.CASCADE)
     info = models.CharField(max_length = 500)
